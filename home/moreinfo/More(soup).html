@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SavorAsia</title>
+    <link rel="icon" href="/root/images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="/root/css/menu/main.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/root/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    
+    <script src="/root/js/shoppingcart/jquery-3.5.1.min.js"></script>
+    <script src="/root/js/shoppingcart/multislider.min.js"></script>
+
+
+    <link rel="stylesheet" href="/root/css/menu/product.css">
+
+</head>
+<body>
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom:30px;
+        }
+    
+        .custombtn {
+            margin: 0 9px;
+            padding: 8px 9px;
+            border: unset;
+            border-radius: 15px;
+            color: #212121;
+            z-index: 1;
+            background: #e8e8e8;
+            position: relative;
+            font-weight: 1000;
+            font-size: 17px;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 250ms;
+            overflow: hidden;
+        }
+    
+        .custombtn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 0;
+                border-radius: 15px;
+                background-color: #3586ff;
+                z-index: -1;
+                -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+                box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+                transition: all 250ms
+            }
+    
+        .custombtn:hover {
+                color: #e8e8e8;
+            }
+    
+        .custombtn:hover::before {
+                    width: 100%;
+                }
+    
+    </style>
+    <nav>
+        <!--Navbar has two part the top one and the bottom one-->
+        <!--Here is top one and in this part I put logo, my account part, and the shopping cart-->
+        <div class="navbar-top">
+            <div>
+                <button id="menuButton"><i class=""></i></button>
+                <!--Logo-->
+                <a href="/home/index.html">
+                    <img class="logo" src="/root/images/logo.png" />
+                </a>
+            </div>
+            <div>
+                <!--My account part-->
+                    <div class="account">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                            <button class="account-btn">
+                                <i class="fas fa-user-alt"></i>
+                            </button>
+                            <span class="account-text">My account</span>
+                        </a>
+                        <!--When we click the btnShowAccountInfo this section will be displayed-->
+                    </div>
+                    <div class="shopping-cart">
+                        <div class="sum-prices">
+                            <!--Shopping cart logo-->
+                            <i class="fas fa-shopping-cart shoppingCartButton"></i>
+                            <!--The total prices of products in the shopping cart -->
+                            <h6 id="sum-prices"></h6>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+        <div class="producstOnCart hide">
+            <div class="overlay"></div>
+            <div class="top">
+                <button id="closeButton">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <h3>Cart</h3>
+            </div>
+            <ul id="buyItems">
+                <h4 class="empty">Your shopping cart is empty</h4>
+                <!-- <li class="buyItem">
+                    <img src="Images/producs-images/Mobiles/galaxynote10.png">
+                    <div>
+                        <h5>Products Name</h5>
+                        <h6>$199</h6>
+                        <div>
+                            <button>-</button>
+                            <span class="countOfProduct">1</span>
+                            <button>+</button>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+            <button class="btn checkout hidden">Check out</button>
+        </div>
+    </nav>
+
+    <main>
+       
+<div class="container">
+    <div class="single-product">
+        <div class="row">
+            <div class="col-6">
+                <div class="product-imageP">
+                    <div class="product-imageP-main">
+                            <img src="/root/images/Ramen soup.png "/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb">
+                    <span><a href="#">Menu</a></span>
+                    <span><a href="#">Name</a></span>
+                    <span class="active">Ramen</span>
+                </div>
+
+                <div class="product">
+                    <div class="product-title">
+                        <h2>Ramen</h2>
+                    </div>
+                    <div class="product-rating">
+                        <span><i class="bx bxs-star"></i></span>
+                        <span><i class="bx bxs-star"></i></span>
+                        <span><i class="bx bxs-star"></i></span>
+                        <span><i class="bx bxs-star"></i></span>
+                        <span><i class="bx bxs-star"></i></span>
+                        <span class="review">(47 Review)</span>
+                    </div>
+                    <div class="product-price">
+                        <h4 class="productName" style="display:none">Ramen</h4>
+
+
+                        <span class="offer-price">$13</span>
+
+
+                        
+                        <h6 class="price" style="display:none">
+                            $<span class="priceValue">13</span>
+                        </h6>
+
+
+
+                        <span class="sale-price">$15</span>
+                    </div>
+
+                    <div class="product-details">
+                        <h3>Description</h3>
+                        <p>აღწერა</p>
+                    </div>
+                    <span class="divider"></span>
+
+                    <div class="product-btn-group">
+                        <div class="button buy-now"><i class='bx bxs-zap'></i> Buy Now</div>
+                        <button class="button add-cart addToCart"
+                                data-product-id="@Model.Id"
+                                data-category-id="@Model.CategoryId">
+                            <i class="bx bxs-cart"></i>Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        
+    </main>
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social-icon">
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="https://www.facebook.com/profile.php?id=100009152091053">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+            </li>
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="https://twitter.com/home?lang=en">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+            </li>
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="https://www.linkedin.com/in/nikoloz-kobaidze-298a35254/">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+            </li>
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="https://www.instagram.com/kobaidze0/">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="#hero1">Home</a></li>
+            <li class="menu__item"><a class="menu__link" href="#hero3">About</a></li>
+            <li class="menu__item"><a class="menu__link" href="#hero2">Menu</a></li>
+            <li class="menu__item"><a class="menu__link" href="#hero5">Contact</a></li>
+
+        </ul>
+        <p>&copy;2023 Nikoloza | All Rights Reserved</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/root/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/root/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/root/js/shoppingcart/script.js"></script>
+    <script src="/root/js/shoppingcart/shopping-cartv1.js"></script>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <script src="/root/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
